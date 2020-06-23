@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using WorldJourney.Models;
+using WorldJourney.Filters;
 
 namespace WorldJourney.Controllers
 {
@@ -21,6 +22,7 @@ namespace WorldJourney.Controllers
             _data.CityInitializeData();
         }
 
+        [ServiceFilter(typeof(LogActionFilterAttribute))]
         [Route("WorldJourney")]
         public IActionResult Index()
         {
