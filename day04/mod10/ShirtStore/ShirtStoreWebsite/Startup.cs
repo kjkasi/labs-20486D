@@ -34,6 +34,15 @@ namespace ShirtStoreWebsite
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ShirtContext shirtContext)
         {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/error.html");
+            }
+
             shirtContext.Database.EnsureDeleted();
             shirtContext.Database.EnsureCreated();
 
