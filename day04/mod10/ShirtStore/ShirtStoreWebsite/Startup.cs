@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using ShirtStoreWebsite.Data;
 using Microsoft.EntityFrameworkCore;
+using ShirtStoreWebsite.Services;
 
 namespace ShirtStoreWebsite
 {
@@ -25,6 +26,8 @@ namespace ShirtStoreWebsite
         {
             services.AddDbContext<ShirtContext>(options =>
                  options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddScoped<IShirtRepository, ShirtRepository>();
 
             services.AddMvc();
         }
