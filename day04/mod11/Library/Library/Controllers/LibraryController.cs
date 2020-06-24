@@ -58,6 +58,7 @@ namespace Library.Controllers
 
         [Authorize]
         [HttpPost, ActionName("LendingBook")]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> LendingBookPost(int id)
         {
             var bookToUpdate = _context.Books.FirstOrDefault(b => b.Id == id);

@@ -59,6 +59,7 @@ namespace Library.Controllers
         }
 
         [HttpPost, ActionName("Register")]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> RegisterPost(RegisterViewModel registerModel)
         {
             if (ModelState.IsValid)
