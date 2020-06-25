@@ -18,6 +18,11 @@ namespace ElectricStore
             services.AddDbContext<StoreContext>(options =>
                  options.UseSqlite("Data Source=electricStore.db"));
 
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromSeconds(60);
+            });
+
             services.AddMvc();
         }
 
@@ -30,6 +35,8 @@ namespace ElectricStore
             app.UseStaticFiles();
 
             app.UseNodeModules(environment.ContentRootPath);
+
+            app.UseSession();
 
             app.UseMvc(routes =>
             {
